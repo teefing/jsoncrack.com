@@ -1,5 +1,4 @@
 import { PostgrestSingleResponse } from "@supabase/supabase-js";
-import toast from "react-hot-toast";
 import { supabase } from "src/lib/api/supabase";
 import { File } from "src/store/useFile";
 import { FileFormat } from "src/types/models";

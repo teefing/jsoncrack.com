@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import styled from "styled-components";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
+import JsonEditor from "src/containers/Editor/JsonEditor";
 import useGraph from "src/store/useGraph";
-import JsonEditor from 'src/containers/Editor/JsonEditor';
 
 export const StyledEditor = styled(Allotment)`
   position: relative !important;

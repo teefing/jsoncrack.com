@@ -3,24 +3,9 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { Flex, Popover, Text } from "@mantine/core";
-import toast from "react-hot-toast";
-import {
-  AiOutlineLink,
-  AiOutlineLock,
-  AiOutlineUnlock,
-} from "react-icons/ai";
 import { MdOutlineCheckCircleOutline } from "react-icons/md";
 import { TbTransform } from "react-icons/tb";
-import {
-  VscAccount,
-  VscError,
-  VscFeedback,
-  VscSourceControl,
-  VscSync,
-  VscSyncIgnored,
-  VscWorkspaceTrusted,
-} from "react-icons/vsc";
-import { saveToCloud, updateJson } from "src/services/json";
+import { VscError, VscSync, VscSyncIgnored } from "react-icons/vsc";
 import useFile from "src/store/useFile";
 import useGraph from "src/store/useGraph";
 import useModal from "src/store/useModal";

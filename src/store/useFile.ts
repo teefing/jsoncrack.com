@@ -109,7 +109,6 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
       const jsonContent = await jsonToContent(JSON.stringify(contentJson, null, 2), format);
 
       get().setContents({ contents: jsonContent });
-
     } catch (error) {
       get().clear();
       console.warn("The content was unable to be converted, so it was cleared instead.");

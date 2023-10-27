@@ -13,7 +13,6 @@ import { supabase } from "src/lib/api/supabase";
 const isDevelopment = process.env.NODE_ENV === "development";
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-
 const Toaster = dynamic(() => import("react-hot-toast").then(c => c.Toaster));
 const ModalController = dynamic(() => import("src/layout/ModalController"));
 
@@ -33,8 +32,7 @@ function JsonCrack({
   const router = useRouter();
 
   React.useEffect(() => {
-    const handleRouteChange = (page: string) => {
-    };
+    const handleRouteChange = (page: string) => {};
 
     router.events.on("routeChangeComplete", handleRouteChange);
 
