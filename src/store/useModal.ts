@@ -11,15 +11,12 @@ interface ModalActions {
 
 const initialStates: ModalState = {
   clear: false,
-  cloud: false,
   download: false,
   import: false,
-  account: false,
   node: false,
   settings: false,
   jwt: false,
   schema: false,
-  cancelPremium: false,
   review: false,
   jq: false,
 };

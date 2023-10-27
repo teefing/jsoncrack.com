@@ -3,11 +3,9 @@ import { Stack, Modal, Button, ModalProps, Text, Anchor, Group } from "@mantine/
 import Editor from "@monaco-editor/react";
 import { toast } from "react-hot-toast";
 import useFile from "src/store/useFile";
-import useModal from "src/store/useModal";
 import useStored from "src/store/useStored";
 
 export const SchemaModal: React.FC<ModalProps> = ({ opened, onClose }) => {
-  const showPremiumModal = useModal(state => state.setVisible("premium"));
   const setJsonSchema = useFile(state => state.setJsonSchema);
   const [schema, setSchema] = React.useState("");
   const lightmode = useStored(state => (state.lightmode ? "light" : "vs-dark"));
