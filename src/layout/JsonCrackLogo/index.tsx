@@ -28,7 +28,7 @@ export const JSONCrackLogo: React.FC<LogoProps> = ({ fontSize = "1.2rem", ...pro
   return (
     <Link href="/" prefetch={false} {...props}>
       <StyledTitle fontSize={fontSize}>
-        <StyledGradientText>JSON</StyledGradientText> CRACK
+        <StyledGradientText>JSON</StyledGradientText> VIEWER
       </StyledTitle>
     </Link>
   );

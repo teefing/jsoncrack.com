@@ -5,20 +5,16 @@ import { useRouter } from "next/router";
 import { StyleSheetManager, ThemeProvider } from "styled-components";
 import { MantineProvider, MantineThemeOverride } from "@mantine/core";
 import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
-import ReactGA from "react-ga4";
 import { monaSans } from "src/constants/fonts";
 import GlobalStyle from "src/constants/globalStyle";
 import { lightTheme } from "src/constants/theme";
 import { supabase } from "src/lib/api/supabase";
-import useUser from "src/store/useUser";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-ReactGA.initialize(GA_TRACKING_ID, { testMode: isDevelopment });
 
 const Toaster = dynamic(() => import("react-hot-toast").then(c => c.Toaster));
-const ExternalMode = dynamic(() => import("src/layout/ExternalMode"));
 const ModalController = dynamic(() => import("src/layout/ModalController"));
 
 const mantineTheme: MantineThemeOverride = {
@@ -35,17 +31,9 @@ function JsonCrack({
   initialSession: Session;
 }>) {
   const router = useRouter();
-  const setSession = useUser(state => state.setSession);
-
-  React.useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) setSession(session);
-    });
-  }, [setSession]);
 
   React.useEffect(() => {
     const handleRouteChange = (page: string) => {
-      ReactGA.send({ hitType: "pageview", page });
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);
@@ -77,7 +65,6 @@ function JsonCrack({
                 },
               }}
             />
-            <ExternalMode />
           </MantineProvider>
         </ThemeProvider>
       </StyleSheetManager>

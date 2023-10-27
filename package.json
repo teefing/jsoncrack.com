@@ -1,16 +1,13 @@
 {
-  "name": "json-crack",
+  "name": "json-viewer",
   "private": true,
   "version": "v3.0.0",
-  "author": "https://github.com/AykutSarac",
-  "homepage": "https://jsoncrack.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "tsc && eslint src && prettier --check src",
-    "lint:fix": "eslint --fix src & prettier --write src",
-    "analyze": "ANALYZE=true npm run build"
+    "lint:fix": "eslint --fix src & prettier --write src"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -20,7 +17,6 @@
     "@mantine/next": "^6.0.21",
     "@mantine/prism": "^6.0.21",
     "@monaco-editor/react": "^4.5.2",
-    "@sentry/nextjs": "^7.72.0",
     "@supabase/auth-helpers-nextjs": "^0.8.1",
     "@supabase/auth-helpers-react": "^0.4.2",
     "@supabase/supabase-js": "^2.36.0",
@@ -40,7 +36,6 @@
     "next": "13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-ga4": "^2.1.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-linkify-it": "^1.0.7",

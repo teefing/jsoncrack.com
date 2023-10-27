@@ -1,7 +1,6 @@
 import debounce from "lodash.debounce";
 import _get from "lodash.get";
 import _set from "lodash.set";
-import ReactGA from "react-ga4";
 import { toast } from "react-hot-toast";
 import { create } from "zustand";
 import { defaultJson } from "src/constants/data";
@@ -12,7 +11,6 @@ import { FileFormat } from "src/types/models";
 import useGraph from "./useGraph";
 import useJson from "./useJson";
 import useStored from "./useStored";
-import useUser from "./useUser";
 
 type SetContents = {
   contents?: string;
@@ -93,7 +91,7 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
     useJson.getState().clear();
   },
   setJsonSchema: jsonSchema => {
-    if (useUser.getState().premium) set({ jsonSchema });
+    set({ jsonSchema });
   },
   setFile: fileData => {
     set({ fileData, format: fileData.format || FileFormat.JSON });
@@ -112,7 +110,6 @@ const useFile = create<FileStates & JsonActions>()((set, get) => ({
 
       get().setContents({ contents: jsonContent });
 
-      ReactGA.event({ action: "change_data_format", category: "User" });
     } catch (error) {
       get().clear();
       console.warn("The content was unable to be converted, so it was cleared instead.");

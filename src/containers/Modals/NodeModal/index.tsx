@@ -4,13 +4,11 @@ import { Prism } from "@mantine/prism";
 import Editor from "@monaco-editor/react";
 import vsDark from "prism-react-renderer/themes/vsDark";
 import vsLight from "prism-react-renderer/themes/vsLight";
-import { VscLock } from "react-icons/vsc";
 import { isIframe } from "src/lib/utils/widget";
 import useFile from "src/store/useFile";
 import useGraph from "src/store/useGraph";
 import useModal from "src/store/useModal";
 import useStored from "src/store/useStored";
-import useUser from "src/store/useUser";
 
 const dataToString = (data: any) => {
   const text = Array.isArray(data) ? Object.fromEntries(data) : data;
@@ -46,7 +44,6 @@ const CodeBlock: React.FC<{ children: any; [key: string]: any }> = ({
 };
 
 export const NodeModal: React.FC<ModalProps> = ({ opened, onClose }) => {
-  const isPremium = useUser(state => state.premium);
   const editContents = useFile(state => state.editContents);
   const setVisible = useModal(state => state.setVisible);
   const lightmode = useStored(state => (state.lightmode ? "light" : "vs-dark"));
@@ -58,7 +55,6 @@ export const NodeModal: React.FC<ModalProps> = ({ opened, onClose }) => {
 
   const onUpdate = () => {
     if (!value) return setEditMode(false);
-    if (!isPremium) return;
     editContents(path!, value, () => {
       setEditMode(false);
       onModalClose();
@@ -72,8 +68,7 @@ export const NodeModal: React.FC<ModalProps> = ({ opened, onClose }) => {
   };
 
   const onEditClick = () => {
-    if (isPremium) return setEditMode(true);
-    setVisible("premium")(true);
+    return setEditMode(true);
   };
 
   const isEditVisible = React.useMemo(
@@ -117,7 +112,7 @@ export const NodeModal: React.FC<ModalProps> = ({ opened, onClose }) => {
                 {value.length ? "Update Document" : "Cancel"}
               </Button>
             ) : (
-              <Button onClick={onEditClick} leftIcon={!isPremium && <VscLock />} variant="filled">
+              <Button onClick={onEditClick} variant="filled">
                 Edit
               </Button>
             )}

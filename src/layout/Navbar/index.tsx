@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { Button } from "@mantine/core";
-import useUser from "src/store/useUser";
 import { JSONCrackLogo } from "../JsonCrackLogo";
 
 const StyledNavbarWrapper = styled.div`
@@ -44,8 +43,6 @@ const Right = styled.div`
 `;
 
 export const Navbar = () => {
-  const isAuthenticated = useUser(state => state.isAuthenticated);
-
   return (
     <StyledNavbarWrapper>
       <StyledNavbar>
@@ -53,26 +50,6 @@ export const Navbar = () => {
           <JSONCrackLogo />
         </Left>
         <Middle className="hide-mobile">
-          <Button
-            component={Link}
-            href="/pricing"
-            prefetch={false}
-            variant="subtle"
-            color="dark"
-            radius="md"
-          >
-            Pricing
-          </Button>
-          <Button
-            component={Link}
-            href="https://marketplace.visualstudio.com/items?itemName=AykutSarac.jsoncrack-vscode"
-            prefetch={false}
-            variant="subtle"
-            color="dark"
-            radius="md"
-          >
-            VS Code
-          </Button>
           <Button
             component={Link}
             href="/docs"
@@ -85,18 +62,6 @@ export const Navbar = () => {
           </Button>
         </Middle>
         <Right>
-          {!isAuthenticated && (
-            <Button
-              component={Link}
-              href="/sign-in"
-              prefetch={false}
-              variant="light"
-              radius="md"
-              className="hide-mobile"
-            >
-              Login
-            </Button>
-          )}
           <Button component={Link} href="/editor" prefetch={false} color="pink" radius="md">
             Editor
           </Button>

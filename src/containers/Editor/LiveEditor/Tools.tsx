@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Badge, Flex, Group, MediaQuery, Menu, Select, Text } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
-import ReactGA from "react-ga4";
 import toast from "react-hot-toast";
 import { AiOutlineFullscreen, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { CgArrowsMergeAltH, CgArrowsShrinkH, CgChevronDown } from "react-icons/cg";
@@ -169,11 +168,6 @@ const ViewMenu = () => {
           fz={12}
           onClick={() => {
             toggleEditor();
-            ReactGA.event({
-              action: "toggle_hide_editor",
-              category: "User",
-              label: "Tools",
-            });
           }}
           icon={fullscreen ? <VscLayoutSidebarLeft /> : <VscLayoutSidebarLeftOff />}
           rightSection={
@@ -188,11 +182,6 @@ const ViewMenu = () => {
           fz={12}
           onClick={() => {
             toggleDirection();
-            ReactGA.event({
-              action: "toggle_layout_direction",
-              category: "User",
-              label: "Tools",
-            });
           }}
           icon={<StyledFlowIcon rotate={rotateLayout(direction)} />}
           rightSection={
@@ -207,11 +196,6 @@ const ViewMenu = () => {
           fz={12}
           onClick={() => {
             toggleFoldNodes();
-            ReactGA.event({
-              action: "toggle_fold_nodes",
-              category: "User",
-              label: "Tools",
-            });
           }}
           icon={foldNodes ? <CgArrowsShrinkH /> : <CgArrowsMergeAltH />}
           rightSection={
@@ -226,11 +210,6 @@ const ViewMenu = () => {
           fz={12}
           onClick={() => {
             toggleExpandCollapseGraph();
-            ReactGA.event({
-              action: "toggle_collapse_nodes",
-              category: "User",
-              label: "Tools",
-            });
           }}
           icon={graphCollapsed ? <VscExpandAll /> : <VscCollapseAll />}
           rightSection={
@@ -347,9 +326,6 @@ export const Tools: React.FC<{ isWidget?: boolean }> = ({ isWidget = false }) =>
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
-            <StyledToolElement title="Cloud" onClick={() => setVisible("cloud")(true)}>
-              Cloud
-            </StyledToolElement>
             <StyledToolElement title="Download as File" onClick={handleSave}>
               Download
             </StyledToolElement>

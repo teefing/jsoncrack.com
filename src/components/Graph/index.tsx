@@ -9,11 +9,9 @@ import useToggleHide from "src/hooks/useToggleHide";
 import { Loading } from "src/layout/Loading";
 import useGraph from "src/store/useGraph";
 import useStored from "src/store/useStored";
-import useUser from "src/store/useUser";
 import { NodeData } from "src/types/models";
 import { CustomEdge } from "./CustomEdge";
 import { ErrorView } from "./ErrorView";
-import { PremiumView } from "./PremiumView";
 
 const Canvas = dynamic(() => import("reaflow").then(r => r.Canvas), {
   ssr: false,
@@ -145,7 +143,6 @@ function getViewType(nodes: NodeData[]) {
 export const Graph = ({ isWidget = false }: GraphProps) => {
   const setViewPort = useGraph(state => state.setViewPort);
   const loading = useGraph(state => state.loading);
-  const isPremium = useUser(state => state.premium);
   const viewType = useGraph(state => getViewType(state.nodes));
   const gesturesEnabled = useStored(state => state.gesturesEnabled);
 
@@ -167,10 +164,6 @@ export const Graph = ({ isWidget = false }: GraphProps) => {
   }, []);
 
   if (viewType === "error") return <ErrorView />;
-
-  if (viewType === "premium" && !isWidget) {
-    if (!isPremium) return <PremiumView />;
-  }
 
   return (
     <>

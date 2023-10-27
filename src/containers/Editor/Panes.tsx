@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Allotment } from "allotment";
 import "allotment/dist/style.css";
 import useGraph from "src/store/useGraph";
+import JsonEditor from 'src/containers/Editor/JsonEditor';
 
 export const StyledEditor = styled(Allotment)`
   position: relative !important;
@@ -16,9 +17,9 @@ export const StyledEditor = styled(Allotment)`
   }
 `;
 
-const JsonEditor = dynamic(() => import("src/containers/Editor/JsonEditor"), {
-  ssr: false,
-});
+// const JsonEditor = dynamic(() => import("src/containers/Editor/JsonEditor"), {
+//   ssr: false,
+// });
 
 const LiveEditor = dynamic(() => import("src/containers/Editor/LiveEditor"), {
   ssr: false,
